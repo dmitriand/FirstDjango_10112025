@@ -51,10 +51,12 @@ def get_items(request, id):
         Товар: {found_item["name"]} <br>
         Количество: {found_item["quantity"]}
         """
+    text += f"<br> <a href='/items'>Назад к списку товаров</a>"
     return HttpResponse(text)
 
 
 def get_all_items(request):
-    numbered_list = [f"{i+1}. {item.get("name")}" for i, item in enumerate(items)]
-    text = "<br>".join(numbered_list)
+    text = ""
+    for i, item in enumerate(items):
+        text += f"<a href='/item/{item["id"]}'>{i+1}. {item["name"]}</a><br>"
     return HttpResponse(text)
