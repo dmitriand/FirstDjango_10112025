@@ -39,5 +39,10 @@ def about(request):
     return HttpResponse(text)
 
 
-def get_items(request):
-    return HttpResponse("request.path")
+def get_items(request, id):
+    item = [x for x in items if x.get("id") == int(id)][0]
+    text = f"""
+    Товар: {item["name"]} <br>
+    Количество: {item["quantity"]}
+    """
+    return HttpResponse(text)

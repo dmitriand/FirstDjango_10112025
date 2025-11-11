@@ -5,5 +5,5 @@ from MainApp import views
 urlpatterns = [
     path("", views.home),
     path("about/", views.about),
-    re_path(r"^item/(?P<item>[1-9]|10)/$", views.get_items),
+    re_path(r"^item/(?P<id>[1-9]|10)/$", views.get_items),
 ]
