@@ -52,3 +52,9 @@ def get_items(request, id):
         Количество: {found_item["quantity"]}
         """
     return HttpResponse(text)
+
+
+def get_all_items(request):
+    numbered_list = [f"{i+1}. {item.get("name")}" for i, item in enumerate(items)]
+    text = "<br>".join(numbered_list)
+    return HttpResponse(text)
