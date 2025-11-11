@@ -44,8 +44,11 @@ def get_items(request, id):
     for item in items:
         if item.get("id") == int(id):
             found_item = item
-    text = f"""
-    Товар: {found_item["name"]} <br>
-    Количество: {found_item["quantity"]}
-    """
+    if id == "10" and not found_item:
+        text = "Товар с id=10 не найден"
+    else:
+        text = f"""
+        Товар: {found_item["name"]} <br>
+        Количество: {found_item["quantity"]}
+        """
     return HttpResponse(text)
