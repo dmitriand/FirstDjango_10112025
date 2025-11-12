@@ -44,7 +44,4 @@ def get_item(request, id: str):
 
 
 def get_all_items(request):
-    text = ""
-    for i, item in enumerate(items):
-        text += f"<a href='/item/{item["id"]}'>{i+1}. {item["name"]}</a><br>"
-    return HttpResponse(text)
+    return render(request, "items.html", {"items": items})
