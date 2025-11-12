@@ -3,13 +3,6 @@ from django.http import HttpResponse, HttpResponseNotFound
 
 # Create your views here.
 
-user = {
-    "first_name": "Иван",
-    "middle_name": "Петрович",
-    "last_name": "Иванов",
-    "phone": "8-923-600-01-02",
-    "email": "vasya@mail.ru",
-}
 
 items = [
     {"id": 1, "name": "Кроссовки abibas", "quantity": 5},
@@ -26,21 +19,19 @@ def home(request):
 
 
 def about(request):
-    text = f"""
-    / <a href="/">Home</a> / <a href="/items/">Items</a> / <a href="/about/">About</a> /
-    <br><br>
-    Имя: {user["first_name"]}<br>
-    Отчество: {user["middle_name"]}<br>
-    Фамилия: {user["last_name"]}<br>
-    телефон: {user["phone"]}<br>
-    email: {user["email"]}
-    """
-    return HttpResponse(text)
+    user = {
+        "first_name": "Иван",
+        "middle_name": "Петрович",
+        "last_name": "Иванов",
+        "phone": "8-923-600-01-02",
+        "email": "vasya@mail.ru",
+    }
+    return render(request, "about.html", context={"user": user})
 
 
-def get_item(request, id: str):
+def get_item(request, id):
     for item in items:
-        if item.get("id") == int(id):
+        if item.get("id") == id:
             return render(request, "item.html", context=item)
     return HttpResponseNotFound(f"Item with id={id} not found")
 
