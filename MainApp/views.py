@@ -21,11 +21,7 @@ items = [
 
 
 def home(request):
-    text = """
-    <h1>"Изучаем django"</h1>
-    <strong>Автор</strong>: <i>Дмитриев А.А.</i>
-    """
-    return HttpResponse(text)
+    return render(request, "index.html")
 
 
 def about(request):
