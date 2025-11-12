@@ -27,6 +27,8 @@ def home(request):
 
 def about(request):
     text = f"""
+    / <a href="/">Home</a> / <a href="/items/">Items</a> / <a href="/about/">About</a> /
+    <br><br>
     Имя: {user["first_name"]}<br>
     Отчество: {user["middle_name"]}<br>
     Фамилия: {user["last_name"]}<br>
