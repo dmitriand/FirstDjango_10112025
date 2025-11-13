@@ -22,8 +22,9 @@ def about(request):
 
 
 def get_item(request, id):
-    item = Item.objects.filter(pk=id)
-    if not item:
+    try:
+        item = Item.objects.get(pk=id)
+    except Item.DoesNotExist:
         return render(
             request, "errors.html", {"errors": [f"Item with id={id} not found"]}
         )
