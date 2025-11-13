@@ -31,11 +31,12 @@ def about(request):
 
 
 def get_item(request, id):
-    items = Item.objects.all()
-    for item in items:
-        if item.pk == id:
-            return render(request, "item.html", context={"item": item})
-    return render(request, "errors.html", {"errors": [f"Item with id={id} not found"]})
+    item = Item.objects.filter(pk=id)
+    if not item:
+        return render(
+            request, "errors.html", {"errors": [f"Item with id={id} not found"]}
+        )
+    return render(request, "item.html", context={"item": item})
 
 
 def get_all_items(request):
