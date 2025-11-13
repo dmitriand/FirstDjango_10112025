@@ -33,7 +33,7 @@ def get_item(request, id):
     for item in items:
         if item.get("id") == id:
             return render(request, "item.html", context=item)
-    return HttpResponseNotFound(f"Item with id={id} not found")
+    return render(request, "errors.html", {"error": f"Item with id={id} not found"})
 
 
 def get_all_items(request):
