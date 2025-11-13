@@ -4,15 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Товары</title>
+    <style>
+        .items-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .item {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 16px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 </head>
 <body>
     / <a href="/">Home</a> / <a href="/items">Items</a> / <a href="/about">About</a> /
     <br><br>
     <h1>Список всех товаров</h1>
-    <ol>
-    {% for item in items %}
-        <li><a href="/item/{{item.id}}">{{item.name}}</a></li>
-    {% endfor %}
-    </ol>
+    <div class="items-container">
+        {% for item in items %}
+            <a href="/item/{{item.id}}">
+                <div class="item">
+                    <h2>{{item.name}}</h2>
+                        <br><br>
+                        {{item.description}}
+                </div>
+            </a>
+        {% endfor %}    
+    </div>
 </body>
 </html>
