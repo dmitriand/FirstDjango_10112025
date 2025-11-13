@@ -8,8 +8,11 @@
 <body>
     / <a href="/">Home</a> / <a href="/items">Items</a> / <a href="/about">About</a> /
     <br><br>
-    <h1>Ошибка</h1>
-    {{ error }}
-    <a href='/items'>Назад к списку товаров</a>
+    <ul>
+        {% for error in errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+    <br><a href='/items'>Назад к списку товаров</a>
 </body>
 </html>
