@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block title %}Информация о товаре{% endblock title %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'MainApp/color.css' %}">
+{% endblock  %}
 
 {% block content %}
     {{ block.super }}
@@ -12,10 +18,10 @@
     </div>
     <div>
         Доступные цвета:<br>
-            <ul>
+            <ul class="ul_no_mark">
                 {% for color in colors %}
                     <li>
-                        {{ color.name }}
+                        <span class="color-box" style="background-color: {{ color.name }} ;"></span>{{ color.name }}
                     </li>
                 {%empty %}
                     <li>нет доступных цветов</li>
