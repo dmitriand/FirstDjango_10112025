@@ -16,3 +16,6 @@ class Item(models.Model):
     count = models.PositiveIntegerField()
     description = models.CharField(max_length=1000, default="")
     colors = models.ManyToManyField(to=Color)
+
+    def __repr__(self) -> str:
+        return f"Item({self.name})"

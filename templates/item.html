@@ -12,17 +12,16 @@
     </div>
     <div>
         Доступные цвета:<br>
-        {% if colors %}
             <ul>
                 {% for color in colors %}
                     <li>
                         {{ color.name }}
                     </li>
+                {%empty %}
+                    <li>нет доступных цветов</li>
                 {% endfor %}
             </ul>       
-        {% else %}
-            <p>нет доступных цветов</p>
-        {% endif %}
+            
     </div>
     {% include "footer.html" %}
 {% endblock content %}
