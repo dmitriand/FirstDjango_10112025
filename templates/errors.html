@@ -6,13 +6,13 @@
     <title>Ошибка</title>
 </head>
 <body>
-    / <a href="/">Home</a> / <a href="/items">Items</a> / <a href="/about">About</a> /
+    / <a href="/">Home</a> / <a href="{% url "all_items" %}">Items</a> / <a href="{% url "about" %}">About</a> /
     <br><br>
     <ul>
         {% for error in errors %}
             <li>{{ error }}</li>
         {% endfor %}
     </ul>
-    <br><a href='/items'>Назад к списку товаров</a>
+    <br><a href="{% url "all_items" %}">Назад к списку товаров</a>
 </body>
 </html>

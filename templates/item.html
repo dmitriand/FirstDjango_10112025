@@ -6,15 +6,14 @@
     <title>Информация о товаре</title>
 </head>
 <body>
-    / <a href="/">Home</a> / <a href="/items">Items</a> / <a href="/about">About</a> /
+    / <a href="/">Home</a> / <a href="{% url "all_items" %}">Items</a> / <a href="{% url "about" %}">About</a> /
     <br><br>
-    {% if item.count == 0 %}
-        <p>Товар отсутствует</p>
-    {% else %}
-       <p>Товар: {{item.name}}</p>
-       <p>Бренд: {{item.brand}}</p>
-        <p>Количество: {{item.count}}</p>
-    {% endif %}
-    <a href='/items'>Назад к списку товаров</a>
+        <p>Товар: {{item.name}}</p>
+        <p>Бренд: {{item.brand}}</p>
+        <p>Количество: {{item.count | default:"Товар отсутствует"}}</p>
+    <div>
+        <p>Описание: {{ item.description }}</p>
+    </div>
+    <a href={% url "all_items" %}>Назад к списку товаров</a>
 </body>
 </html>

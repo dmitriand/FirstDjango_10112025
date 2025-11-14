@@ -6,7 +6,7 @@
     <title>Main page</title>
 </head>
 <body>
-    / <a href="/">Home</a> / <a href="/items">Items</a> / <a href="/about">About</a> /
+    / <a href="/">Home</a> / <a href="{% url "all_items" %}">Items</a> / <a href="{% url "about" %}">About</a> /
     <br><br>
     <h1> Приветствую! </h1>
 
@@ -16,6 +16,6 @@
     Это главная страница сайта.<br>
     <i>Сайт пока в разработке...</i><br>
     <br>
-    Но вам <a href="items/">список всех товаров</a>
+    Но вам <a href="{% url "all_items" %}">список всех товаров</a>
 </body>
 </html>

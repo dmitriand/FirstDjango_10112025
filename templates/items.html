@@ -28,12 +28,12 @@
     </style>
 </head>
 <body>
-    / <a href="/">Home</a> / <a href="/items">Items</a> / <a href="/about">About</a> /
+    / <a href="/">Home</a> / <a href="{% url "all_items" %}">Items</a> / <a href="{% url "about" %}">About</a> /
     <br><br>
     <h1>Список всех товаров</h1>
     <div class="items-container">
         {% for item in items %}
-            <a href="/item/{{item.id}}">
+            <a href="{% url "item-detail" item.id %}">
                 <div class="item">
                     <h2>{{item.name}}</h2>
                         <br><br>
