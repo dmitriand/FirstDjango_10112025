@@ -24,11 +24,12 @@ def about(request):
 def get_item(request, id):
     try:
         item = Item.objects.get(pk=id)
+        colors = item.colors.all()
     except Item.DoesNotExist:
         return render(
             request, "errors.html", {"errors": [f"Item with id={id} not found"]}
         )
-    return render(request, "item.html", context={"item": item})
+    return render(request, "item.html", context={"item": item,"colors": colors})
 
 
 def get_all_items(request):
