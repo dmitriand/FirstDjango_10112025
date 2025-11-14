@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Информация о товаре</title>
-</head>
-<body>
-    / <a href="/">Home</a> / <a href="{% url "all_items" %}">Items</a> / <a href="{% url "about" %}">About</a> /
-    <br><br>
-        <p>Товар: {{item.name}}</p>
+{% extends "base.html" %}
+
+{% block title %}Информация о товаре{% endblock title %}
+
+{% block content %}
+    {{ block.super }}
+        <h1><p>Товар: {{item.name}}</p></h1>
         <p>Бренд: {{item.brand}}</p>
         <p>Количество: {{item.count | default:"Товар отсутствует"}}</p>
     <div>
         <p>Описание: {{ item.description }}</p>
     </div>
-    <a href={% url "all_items" %}>Назад к списку товаров</a>
-</body>
-</html>
+    {% include "footer.html" %}
+{% endblock content %}
+

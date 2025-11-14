@@ -1,13 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main page</title>
-</head>
-<body>
-    / <a href="/">Home</a> / <a href="{% url "all_items" %}">Items</a> / <a href="{% url "about" %}">About</a> /
-    <br><br>
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Main page {% endblock title %}
+
+{% block content %}
+    {{ block.super }}
+    <br>
+
+    <img width="50px" src="{% static "images/django.svg" %}" alt="my_image">
+
     <h1> Приветствую! </h1>
 
     Меня зовут: <i>{{ name }}</i><br>
@@ -16,6 +18,6 @@
     Это главная страница сайта.<br>
     <i>Сайт пока в разработке...</i><br>
     <br>
-    Но вам <a href="{% url "all_items" %}">список всех товаров</a>
-</body>
-</html>
+    Но вам <a href="{% url "all-items" %}">список всех товаров</a>
+{% endblock content %}
+
